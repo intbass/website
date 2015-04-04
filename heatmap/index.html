@@ -1,0 +1,192 @@
+<html>
+<head>
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+<title>Junglist map</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<style>
+			body, html {
+				margin:0;
+				padding:0;
+				font-family:Arial;
+				font-size: 80%;
+                                background-color: #33DD33
+                                color: #446600
+
+			}
+			h1 {
+				font-size: 175%;
+				margin-bottom: 5px;
+				margin-top: 5px;
+			}
+			#main {
+				position:relative;
+				width:1020px;
+				padding:10px;
+				margin:auto;
+				margin-top: 1px;
+			}
+			#heatmapArea {
+				position:relative;
+				float:left;
+				width:100%;
+				height:500px;
+				border:none;
+			}
+                        #credits > div {
+				position:relative;
+                                text-align: center;
+                        }
+                        .flip {
+-moz-transform: scaleX(-1) scaleY(-1);
+-webkit-transform: scaleX(-1) scaleY(-1);
+transform: scaleX(-1) scaleY(-1);
+filter: flip; /*IE*/
+}
+		</style>
+<!--<link rel="shortcut icon" type="image/ico" href="http://radio.beats.to/favicon.ico" /> -->
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+</head>
+
+<body>
+<div id="main">
+	<!--<div id="logo"><img src="http://beats.to/site_images/beatsto_logo.png"></div>-->
+	<div id="topText" style="font-size: 175%">
+	  <span style="color:'#90CFF0'" id="numListeners">0 </span>
+	  <span>listeners in</span>
+	  <span id="numCities">0 </span>
+	  <span>cities are currently tuned in to beats.to radio.</span>
+	  <span style="float: right">
+	    <select id="streamSelector" onChange="javascript:getData();">
+		<option value="all">All</option>
+		<option value="intbass">International Bass Station</option>
+		<option value="technologix">Technologix</option>
+	    </select>
+	  </span>
+	</div>
+	<div id="heatmapArea"></div>
+	<div id="credits">
+                <div>&nbsp;<br></div>
+		<div>An Intbass  Production. Last refreshed at <span id="ts">never</span></div>
+		<div><a href="http://www.patrick-wied.at/static/heatmapjs/">heatmap.js</a> by <a href="http://www.patrick-wied.at" target="_blank">Patrick Wied</a>- GeoLite data created by <a href="http://www.maxmind.com/" target="_blank">MaxMind</a></div>
+	</div>
+</div>
+<script type="text/javascript" src="heatmap.js"></script>
+<script type="text/javascript" src="heatmap-gmaps.js"></script>
+<script type="text/javascript">
+
+var map;
+var heatmap; 
+var heatdata ;
+var mapload;
+
+function woo(data) {
+  heatdata=data;
+  checkload();
+}
+
+function getData() {
+    var e = document.getElementById("streamSelector");
+    var stream = e.options[e.selectedIndex].value;
+
+    var request = new XMLHttpRequest();
+    request.open('GET', '/api/station/' + stream + '/listeners?callback=woo', true);
+    request.setRequestHeader('Accept',"application/json");
+    request.onreadystatechange = function (aEvt) {
+      if (request.readyState == 4) {
+         if (request.status == 200) {
+           eval(request.responseText);
+         } else {
+           console.log('Error' + request.statusText);
+         }
+      }
+    };
+    request.send(null);
+}
+
+
+getData();
+
+// Runs the getData function every 30 seconds
+var int=self.setInterval("getData()",30000);
+var visible = true;
+
+function checkload() {
+  if (heatdata && mapload) {
+    var data = heatdata.data;
+    if (data.length == 0) {
+      //document.getElementById('heatmapArea').className = 'flip';
+      heatmap.hide();
+    } else {
+      //document.getElementById('heatmapArea').className = '';
+      heatmap.show();
+    }
+    if (data.length == 0) {
+      map.setZoom(2);
+      map.panTo(myLatlng);
+    } else {
+      heatmap.setDataSet(heatdata);
+
+      var bounds = new google.maps.LatLngBounds();
+      for (var i = 0; i < data.length; i++) {
+        point = data[i];
+        bounds.extend(new google.maps.LatLng(point.lat,point.lng));
+      }
+      map.fitBounds(bounds);
+    }
+
+    var currentTime = new Date()
+    var hours = currentTime.getHours()
+    var minutes = currentTime.getMinutes()
+    if (minutes < 10){
+      minutes = "0" + minutes
+    }
+    var ts = hours + ":" + minutes + " ";
+    document.getElementById('ts').innerHTML=ts
+
+    // Count and display number of listeners
+    var numListeners = 0
+    var len = data.length
+    for (var num=0; num<len; num++) {
+        if ( parseInt(data[num].count) == 1 ) {
+            numListeners++;
+        } else {
+           numListeners += parseInt(data[num].count) 
+        }
+    }
+    document.getElementById('numListeners').innerHTML=numListeners
+    document.getElementById('numCities').innerHTML=data.length
+  }
+}
+var myLatlng = new google.maps.LatLng(20, 16.35);
+window.onload = function(){
+	// sorry - this demo is a beta
+	// there is lots of work todo
+	// but I don't have enough time for eg redrawing on dragrelease right now
+	var myOptions = {
+	  zoom: 2,
+          maxZoom: 7,
+	  center: myLatlng,
+	  mapTypeId: google.maps.MapTypeId.TERRAIN,
+	  disableDefaultUI: false,
+	  scrollwheel: false,
+	  draggable: false,
+	  navigationControl: false,
+	  mapTypeControl: false,
+	  scaleControl: false,
+	  disableDoubleClickZoom: true,
+	  streetViewControl: false
+	};
+	map = new google.maps.Map(document.getElementById("heatmapArea"), myOptions);
+	
+	heatmap = new HeatmapOverlay(map, {"radius":12, "visible":true, "opacity":70});
+	
+	// this is important, because if you set the data set too early, the latlng/pixel projection doesn't work
+	google.maps.event.addListenerOnce(map, "idle", function(){
+                mapload=true;
+                checkload();
+	});
+};
+
+</script>
+</body>
+</html>
