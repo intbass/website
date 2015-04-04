@@ -10,7 +10,7 @@
 }
 
 .live {
-     background-color: green;
+     color: green;
 }
 </style>
 
@@ -32,13 +32,17 @@
 <img src="images/itl_bass_title_img.png" alt="international bass station" width=300>
 </br></br></br></br>
 Broadcasting dnb 24/7 [ <a href="//intbass.com/pls/intbass-mp3-hi.pls">HI</a> <a href="//intbass.com/pls/intbass-mp3-lo.pls">LO</a> ]</br>
-PLAYING: <span data-bind="text: playing" id="playing">TUNES</span> BY <span id="artist" data-bind="text: artist">ARTIST</span></span> <span data-bind="css: { live: live == 1 }, text: tunein" onClick="location.href='//intbass.com/pls/intbass-mp3-hi.pls'" id="tunein">TUNE IN</span>
-<div><audio controls="controls" preload="none"><source src="/intbass-ogg-hi" type="application/ogg"></source></audio></div>
+PLAYING: <span data-bind="text: playing" id="playing">TUNES</span> BY <span id="artist" data-bind="text: artist">ARTIST</span></span> <span data-bind="css: { live: live() }, text: tunein" onClick="location.href='//intbass.com/pls/intbass-mp3-hi.pls'" id="tunein">TUNE IN</span>
+<div><audio controls="controls" preload="none"><source src="http://intbass.com:8000/intbass-ogg-hi" type="application/ogg"></source></audio></div>
 </div>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="http://ajax.aspnetcdn.com/ajax/knockout/knockout-2.2.1.js"></script>
 <script src="//intbass.com/js/0.1/station/ko.js"></script>
-<script type="text/javascript">var station = station = new StationViewModel('intbass'); var tunein = ko.computed(function() { if (station.live == true) { return 'LIVE NOW' }; return 'TUNE IN' }); ko.applyBindings(station);</script>
+<script type="text/javascript">
+var station = new StationViewModel('intbass');
+var tunein = ko.computed(function() { return (station.live() == true) ? 'LIVE NOW' : 'TUNE IN'; });
+ko.applyBindings(station);
+</script>
 </br></br></br></br>
 </font></div></center></body>
 
