@@ -48,7 +48,7 @@ body {
     background-position: 50%;
     background-image: url("../images/intbassstation.png");
     height: 288px;
-    z-index: 3;
+    z-index: -99;
     left: 0px;
     top: 0px;
     width: 100%;

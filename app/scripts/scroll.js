@@ -1,5 +1,5 @@
 'use strict';
-/* global $, IScroll, ScrollMagic */
+/* global $, IScroll, ScrollMagic, TimelineMax, TweenMax, Linear */
 
 $(function () { // wait for document ready          
 // init ctrl
@@ -61,4 +61,16 @@ for (var i=0; i<slides.length; i++) {
 }
 // workaround for problem with bottom positioned pins
 $('#broadcast').parent().height($('#broadcast').height());
+
+var tween = new TimelineMax ()
+    .add([
+        TweenMax.to('#bassstation', 1, {y: '500', opacity: 0, ease: Linear.easeNone}),
+        TweenMax.to('#earthrise', 1, {y: '-50', ease: Linear.easeNone}),
+    ]);
+
+new ScrollMagic.Scene({triggerElement: '#title', duration: 400, offset: 0})
+                .setTween(tween)
+                .addIndicators({parent: '#example-wrapper'}) // add indicators (requires plugin)
+                .addTo(ctrl);
+
 });
