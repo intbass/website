@@ -1,0 +1,84 @@
+.browsehappy {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}
+#content-wrapper,
+#intbass-wrapper {
+    height: 100%;
+}
+.scrollContainer {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    width: 100%;
+    height: 100%;
+}
+#intbass-wrapper .scrollContent {
+    height: 100%;
+}
+#intbass-wrapper.scrollContainer .scrollContent {
+    width: 100%;
+}
+html,
+body {
+    height: 100%;
+    overflow: hidden;
+    width: 100%;
+}
+section.panel {
+    background-color: black;
+    height: 95vh;
+}
+a:link,
+a:hover,
+a:visited {
+    color: white;
+    text-decoration: none;
+}
+body {
+    background-color: black;
+    color: white;
+    font-family: 'Exo 2', sans-serif;
+    position: fixed!important;
+}
+#bassstation {
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-image: url("../images/intbassstation.png");
+    height: 288px;
+    z-index: 3;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+}
+#earthrise {
+    position: relative;
+    background-image: url("../images/bg_1024.png");
+    background-repeat: no-repeat;
+    height: 95vh;
+    z-index: -100;
+    margin-top: -210px;
+    width: 100%;
+    background-size: 100%;
+}
+#broadcast {
+    background-color: black;
+    font-size: 3em;
+    position: absolute;
+    top: auto;
+    bottom: 0px;
+    z-index: 1000000;
+}
+@media (max-width: 700px) {
+    #broadcast {
+      font-size: 2em;
+    }
+    #bassstation {
+        background-image: url("../images/intbassstation_small.png");
+        background-repeat: no-repeat;
+        background-position-x: 50%;
+        background-color: none;
+    }
+}
