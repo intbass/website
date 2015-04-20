@@ -5,7 +5,7 @@
 Install nodejs from https://nodejs.org/download/
 
 Install the build task runner globally,
-run `npm install -g grunt-cli`
+`$ sudo npm install -g grunt-cli bower`
 
 Install the other dependencies;
 ```
