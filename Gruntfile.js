@@ -50,7 +50,7 @@ module.exports = function (grunt) {
       },
       styles: {
         files: ['<%= yeoman.app %>/styles/{,*/}*.css'],
-        tasks: ['newer:copy:styles', 'autoprefixer']
+        tasks: ['newer:copy:styles', 'autoprefixer:server' ]
       },
       gruntfile: {
         files: ['Gruntfile.js']
@@ -85,10 +85,6 @@ module.exports = function (grunt) {
               connect().use(
                 '/bower_components',
                 connect.static('./bower_components')
-              ),
-              connect().use(
-                '/app/styles',
-                connect.static('./app/styles')
               ),
               connect().use(
                 '/app/scripts',
@@ -176,7 +172,7 @@ module.exports = function (grunt) {
           expand: true,
           cwd: '<%= yeoman.app %>',
           src: '{,*/}*.css',
-          dest: '.tmp/styles/'
+          dest: '.tmp/'
         }]
       },
       dist: {
@@ -184,7 +180,7 @@ module.exports = function (grunt) {
           expand: true,
           cwd: '<%= yeoman.app %>',
           src: '{,*/}*.css',
-          dest: '.tmp/styles/'
+          dest: '.tmp/'
         }]
       }
     },
@@ -356,7 +352,7 @@ module.exports = function (grunt) {
       styles: {
         expand: true,
         cwd: '<%= yeoman.app %>/styles',
-        dest: '.tmp/styles/',
+        dest: '.tmp/',
         src: '{,*/}*.css'
       }
     },
