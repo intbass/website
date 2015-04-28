@@ -4,11 +4,11 @@
     color: #000;
     padding: 0.2em 0;
 }
-#content-wrapper,
-#intbass-wrapper {
+#fullwindow {
     height: 100%;
 }
 .scrollContainer {
+    position: relative;
     overflow-y: scroll;
     overflow-x: hidden;
     width: 100%;
@@ -17,7 +17,7 @@
 #intbass-wrapper .scrollContent {
     height: 100%;
 }
-#intbass-wrapper.scrollContainer .scrollContent {
+#intbass-wrapper.scrollContainer > .scrollContent > div {
     width: 100%;
 }
 html,
@@ -28,7 +28,8 @@ body {
 }
 section.panel {
     background-color: black;
-    height: 95vh;
+    height: 90vh;
+    overflow: hidden;
 }
 a:link,
 a:hover,
@@ -57,23 +58,25 @@ body {
     position: relative;
     background-image: url("../images/bg_1024.png");
     background-repeat: no-repeat;
-    height: 95vh;
+    height: 100vh;
     z-index: -100;
     margin-top: -210px;
     width: 100%;
     background-size: 100%;
 }
 #broadcast {
-    background-color: black;
+    overflow: hidden;
     font-size: 3em;
     position: absolute;
     top: auto;
     bottom: 0px;
     z-index: 1000000;
+    height: 10vh;
+    width: 100%;
 }
 @media (max-width: 700px) {
     #broadcast {
-      font-size: 2em;
+        height: 300px;
     }
     #bassstation {
         background-image: url("../images/intbassstation_small.png");
@@ -82,3 +85,30 @@ body {
         background-color: none;
     }
 }
+@media (max-width: 600px) {
+    #broadcast {
+        height: 100px;
+    }
+}
+.stucktop {
+    background-color: black;
+    position: fixed;
+    top: 0;
+    y: 0;
+    x: 0;
+}
+.stuckpanel {
+    position: fixed;
+    top: 5vh;
+}
+.tapertop {
+  background: -webkit-linear-gradient(rgba(0,0,0,0),rgba(0,0,0,1)); /*Safari 5.1-6*/
+  background: -o-linear-gradient(rgba(0,0,0,0),rgba(0,0,0,1)); /*Opera 11.1-12*/
+  background: -moz-linear-gradient(rgba(0,0,0,0),rgba(0,0,0,1)); /*Fx 3.6-15*/
+  background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,1)); /*Standard*/
+  height: 40px;
+  width: 100%;
+}
+#playing { font-size: 0.5em; float: left; }
+#artist { font-size: 0.3em; float: left; clear: left; }
+#tunein { float: right; }

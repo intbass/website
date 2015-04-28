@@ -25,105 +25,101 @@ html.no-js
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    div(id="content-wrapper")
-      div(id="intbass-wrapper" class="scrollContainer")
-        div(class="scrollContent")
-          section(id="title")
-            div(id="bassstation")
-            div(id="earthrise")
-          section(id="broadcast")
-            div PLAYING: 
-              span(data-bind="text: playing" id="playing") TUNES
-              span BY 
-              span(id="artist" data-bind="text: artist") ARTIST
-              span(data-bind="css: { live: live() }, text: tunein" onClick="location.href='//intbass.com/pls/intbass-mp3-hi.pls'" id="tunein") TUNE IN
-              span [ 
-                a(href="//intbass.com/pls/intbass-mp3-hi.pls") HI
-              span ~
-                a(href="//intbass.com/pls/intbass-mp3-lo.pls") LO
-              span ]
+    div(id="intbass-wrapper" class="scrollContainer")
+      div(class="scrollContent")
+        section(id="title")
+          div(id="bassstation")
+          div(id="earthrise")
+          div(id="panelbg")
+            div(class="tapertop")
+        section(id="broadcast" ng-controller="broadcastController")
+          div
+            span(id="tunein" onClick="location.href='//intbass.com/pls/intbass-mp3-hi.pls'") &nbsp;TUNE IN
+            span(id="playing" ng-bind="playing" data-fittext-load-delay="2500" data-fittext data-fittext-nl data-fittext-min="10" data-fittext-max="32") TUNES
+            span(id="artist" ng-bind="artist" data-fittext-load-delay="2500" data-fittext data-fittext-nl data-fittext-min="8" data-fittext-max="20") ARTIST
             div
-               audio(controls hidden="hidden" preload="none")
-                  source(src="http://intbass.com:8000/intbass-ogg-hi" type="application/ogg")
-          section(id="archive", class="panel")
-            table
-              tr
-                th mix
-                th recorded on
-                th(align="left") notes
-                th file size
-              tr
-               td(align="center")
-                 a(href="http://www.paulgrouchy.com/tofu/tofu-always_changin.mp3") always changin'
-               td(align="right") March 11th, 2015
-               td 40 mins of dnb
-               td(align="right") 57MB
-              tr
-               td(align="center") 
-                 a(href="http://www.paulgrouchy.com/tofu/tofu-ddub_approved.mp3") ddub approved
-               td(align="right") July 23rd, 2014
-               td 1.5 hrs of dnb
-               td(align="right") 122MB
-              tr
-               td(align="center") 
-                 a(href="http://www.paulgrouchy.com/tofu/tofu-dr_idiot.mp3") dr. idiot
-               td(align="right") June 18th, 2014
-               td 1.5 hrs of dnb
-               td(align="right") 124MB
-              tr
-               td(align="center")
-                 a(href="http://www.paulgrouchy.com/tofu/tofu-swingindnb.mp3") swingin' dnb
-               td(align="right") March 26th, 2014
-               td 36 mins of electro swing followed by 25 mins of dnb
-               td(align="right") 84MB
-              tr
-               td(align="center")
-                 a(href="http://www.paulgrouchy.com/tofu/tofu-spring_bounce.mp3") spring bounce
-               td(align="right") February 26th, 2014
-               td 46 mins of dnb
-               td(align="right") 63MB
-              tr
-               td(align="center")
-                 a(href="http://www.paulgrouchy.com/tofu/tofu-hittinThirty.mp3") hittin' thirty
-               td(align="right") March 20th, 2013
-               td 63 mins of dnb
-               td(align="right") 86MB
-              tr
-               td(align="center") 
-                 a(href="http://www.paulgrouchy.com/tofu/greenleader_b2b_tofu-yinAndBang.mp3") yin and bang
-               td(align="right") February 27th, 2013
-               td 2 hrs of dnb, greenleader b2b tofu
-               td(align="right") 163MB
-              tr
-               td(align="center") 
-                 a(href="http://www.paulgrouchy.com/tofu/tofu-wedNesNightMadness.mp3") wednesnight madness
-               td(align="right") January 23rd, 2013
-               td 60 mins of dnb
-               td(align="right") 82MB
-              tr
-               td(align="center") 
-                 a(href="http://www.paulgrouchy.com/tofu/tofu-headInTheClouds.mp3") head in the clouds
-               td(align="right") January 9th, 2013
-               td 52 mins of dnb
-               td(align="right") 71MB
-            small Right click on a mix name, then "Save Link As..." or some such thing to download the mp3.
-            small Last updated on March 24th, 2015
-            
-          section(class="panel") 
-            h3 kielbasa 
-            p Bacon ipsum dolor amet ham shoulder frankfurter. Venison chuck shankle turkey doner. Meatloaf doner capicola, landjaeger chicken swine short loin kielbasa bresaola leberkas. Ham t-bone frankfurter turkey beef ribs, venison rump.</section>
-          section(class="panel") 
-            h3 Shank
-            p Bacon ipsum dolor amet shoulder venison hamburger turducken chicken brisket strip steak ham spare ribs. Biltong shankle meatloaf, cupim pork loin short ribs ham boudin pig chicken spare ribs beef meatball leberkas. Rump flank tri-tip, meatball pork short loin biltong jerky. Shoulder boudin turducken, beef ribs pork ham hock short ribs capicola jowl fatback picanha meatloaf. Tenderloin shoulder meatloaf turducken. Ham kevin salami ham hock.</section>
-          section(class="panel") 
-            h3 Chuck
-            p Bacon ipsum dolor amet pancetta leberkas cow. Fatback flank cow, hamburger biltong boudin pancetta strip steak filet mignon leberkas shoulder. Tongue ham hock drumstick cow jerky prosciutto ground round chuck t-bone. Ground round doner frankfurter pig short loin picanha corned beef shank. Biltong chicken flank short loin, meatball drumstick jowl landjaeger prosciutto turkey bacon ribeye sausage frankfurter. Jerky tongue t-bone short loin turkey pastrami pancetta.</section>
-          section(class="panel") 
-            h3 Biltong
-            p Bacon ipsum dolor amet sausage kevin chuck pancetta tongue. Picanha swine bresaola kielbasa chuck ground round meatball capicola ball tip frankfurter spare ribs venison pork belly pancetta. Beef hamburger sausage, filet mignon pastrami meatball chuck t-bone tail tenderloin swine venison drumstick sirloin. Turducken ball tip turkey meatball sirloin tongue kielbasa. T-bone jerky landjaeger kevin fatback biltong tenderloin strip steak rump corned beef sirloin shoulder. Corned beef drumstick pork loin shoulder sirloin short loin bacon meatloaf shank tail. Pork loin landjaeger meatball jerky ground round jowl, alcatra bresaola tenderloin t-bone cupim.</section>
-          section(class="panel") 
-            h3 Kevin
-            p Bacon ipsum dolor amet meatloaf pork, tenderloin boudin t-bone pig landjaeger fatback pork loin porchetta cow brisket. Frankfurter flank jerky, ham fatback tenderloin capicola jowl. Porchetta cow picanha swine pig venison bacon rump pork chop andouille hamburger tongue. Short ribs tongue leberkas boudin meatloaf. Flank landjaeger shoulder, pastrami andouille alcatra turkey short loin capicola. Swine pork belly jowl, tail jerky strip steak brisket frankfurter bresaola chuck. Shoulder ground round t-bone ball tip biltong fatback.</section>
+               audio(hidden="hidden" preload="none")
+                  source(src="http://intbass.com:8000/intbass-ogg-hi" type="audio/ogg; codecs=vorbis")
+                  source(src="http://intbass.com:8000/intbass-mp3-hi" type="audio/mpeg; codecs=mp3")
+        section(id="archive", class="panel")
+          table
+            tr
+              th mix
+              th recorded on
+              th(align="left") notes
+              th file size
+            tr
+             td(align="center")
+               a(href="http://www.paulgrouchy.com/tofu/tofu-always_changin.mp3") always changin'
+             td(align="right") March 11th, 2015
+             td 40 mins of dnb
+             td(align="right") 57MB
+            tr
+             td(align="center")
+               a(href="http://www.paulgrouchy.com/tofu/tofu-ddub_approved.mp3") ddub approved
+             td(align="right") July 23rd, 2014
+             td 1.5 hrs of dnb
+             td(align="right") 122MB
+            tr
+             td(align="center")
+               a(href="http://www.paulgrouchy.com/tofu/tofu-dr_idiot.mp3") dr. idiot
+             td(align="right") June 18th, 2014
+             td 1.5 hrs of dnb
+             td(align="right") 124MB
+            tr
+             td(align="center")
+               a(href="http://www.paulgrouchy.com/tofu/tofu-swingindnb.mp3") swingin' dnb
+             td(align="right") March 26th, 2014
+             td 36 mins of electro swing followed by 25 mins of dnb
+             td(align="right") 84MB
+            tr
+             td(align="center")
+               a(href="http://www.paulgrouchy.com/tofu/tofu-spring_bounce.mp3") spring bounce
+             td(align="right") February 26th, 2014
+             td 46 mins of dnb
+             td(align="right") 63MB
+            tr
+             td(align="center")
+               a(href="http://www.paulgrouchy.com/tofu/tofu-hittinThirty.mp3") hittin' thirty
+             td(align="right") March 20th, 2013
+             td 63 mins of dnb
+             td(align="right") 86MB
+            tr
+             td(align="center")
+               a(href="http://www.paulgrouchy.com/tofu/greenleader_b2b_tofu-yinAndBang.mp3") yin and bang
+             td(align="right") February 27th, 2013
+             td 2 hrs of dnb, greenleader b2b tofu
+             td(align="right") 163MB
+            tr
+             td(align="center")
+               a(href="http://www.paulgrouchy.com/tofu/tofu-wedNesNightMadness.mp3") wednesnight madness
+             td(align="right") January 23rd, 2013
+             td 60 mins of dnb
+             td(align="right") 82MB
+            tr
+             td(align="center")
+               a(href="http://www.paulgrouchy.com/tofu/tofu-headInTheClouds.mp3") head in the clouds
+             td(align="right") January 9th, 2013
+             td 52 mins of dnb
+             td(align="right") 71MB
+          small Right click on a mix name, then "Save Link As..." or some such thing to download the mp3.
+          small Last updated on March 24th, 2015
+
+        section(class="panel")
+          h3 kielbasa
+          p Bacon ipsum dolor amet ham shoulder frankfurter. Venison chuck shankle turkey doner. Meatloaf doner capicola, landjaeger chicken swine short loin kielbasa bresaola leberkas. Ham t-bone frankfurter turkey beef ribs, venison rump.</section>
+        section(class="panel")
+          h3 Shank
+          p Bacon ipsum dolor amet shoulder venison hamburger turducken chicken brisket strip steak ham spare ribs. Biltong shankle meatloaf, cupim pork loin short ribs ham boudin pig chicken spare ribs beef meatball leberkas. Rump flank tri-tip, meatball pork short loin biltong jerky. Shoulder boudin turducken, beef ribs pork ham hock short ribs capicola jowl fatback picanha meatloaf. Tenderloin shoulder meatloaf turducken. Ham kevin salami ham hock.</section>
+        section(class="panel")
+          h3 Chuck
+          p Bacon ipsum dolor amet pancetta leberkas cow. Fatback flank cow, hamburger biltong boudin pancetta strip steak filet mignon leberkas shoulder. Tongue ham hock drumstick cow jerky prosciutto ground round chuck t-bone. Ground round doner frankfurter pig short loin picanha corned beef shank. Biltong chicken flank short loin, meatball drumstick jowl landjaeger prosciutto turkey bacon ribeye sausage frankfurter. Jerky tongue t-bone short loin turkey pastrami pancetta.</section>
+        section(class="panel")
+          h3 Biltong
+          p Bacon ipsum dolor amet sausage kevin chuck pancetta tongue. Picanha swine bresaola kielbasa chuck ground round meatball capicola ball tip frankfurter spare ribs venison pork belly pancetta. Beef hamburger sausage, filet mignon pastrami meatball chuck t-bone tail tenderloin swine venison drumstick sirloin. Turducken ball tip turkey meatball sirloin tongue kielbasa. T-bone jerky landjaeger kevin fatback biltong tenderloin strip steak rump corned beef sirloin shoulder. Corned beef drumstick pork loin shoulder sirloin short loin bacon meatloaf shank tail. Pork loin landjaeger meatball jerky ground round jowl, alcatra bresaola tenderloin t-bone cupim.</section>
+        section(class="panel")
+          h3 Kevin
+          p Bacon ipsum dolor amet meatloaf pork, tenderloin boudin t-bone pig landjaeger fatback pork loin porchetta cow brisket. Frankfurter flank jerky, ham fatback tenderloin capicola jowl. Porchetta cow picanha swine pig venison bacon rump pork chop andouille hamburger tongue. Short ribs tongue leberkas boudin meatloaf. Flank landjaeger shoulder, pastrami andouille alcatra turkey short loin capicola. Swine pork belly jowl, tail jerky strip steak brisket frankfurter bresaola chuck. Shoulder ground round t-bone ball tip biltong fatback.</section>
 
     div(class="container")
       div(ng-view="")
@@ -142,6 +138,7 @@ html.no-js
     script(src="bower_components/angular-route/angular-route.js")
     script(src="bower_components/angular-sanitize/angular-sanitize.js")
     script(src="bower_components/angular-touch/angular-touch.js")
+    script(src="bower_components/ngFitText/src/ng-FitText.js")
     script(src="bower_components/greensock/src/uncompressed/TweenMax.js")
     script(src="bower_components/scrollmagic/scrollmagic/uncompressed/ScrollMagic.js")
     // endbower 
@@ -150,7 +147,6 @@ html.no-js
     // build:js({.tmp,app}) scripts/scripts.js 
     script(src="scripts/newrelic.js")
     script(src="bower_components/scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap.js")
-    script(src="bower_components/scrollmagic/scrollmagic/uncompressed/plugins/debug.addindicators.js")
     script(src="scripts/app.js")
     script(src="scripts/scroll.js")
     script(src="scripts/controllers/main.js")

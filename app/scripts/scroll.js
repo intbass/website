@@ -48,19 +48,19 @@ if (isMobile) {
       triggerElement: '#broadcast'
     })
     .setPin('#broadcast')
-    .addIndicators() // add indicators (requires plugin)
+    .setClassToggle('#broadcast', 'stucktop')
     .addTo(ctrl);
 
 // get all slides
 var slides = document.querySelectorAll('section.panel');
 
 // create scene for every slide
-for (var i=0; i<slides.length; i++) {
+for (var i=0; i<slides.length; i=i+1) {
   new ScrollMagic.Scene({
       triggerElement: slides[i], offset: $('#broadcast').height()*-1
     })
     .setPin(slides[i])
-    .addIndicators({parent: '#example-wrapper'}) // add indicators (requires plugin)
+    .setClassToggle(slides[i], 'stuckpanel')
     .addTo(ctrl);
 }
 // workaround for problem with bottom positioned pins
@@ -74,7 +74,6 @@ var tween = new TimelineMax ()
 
 new ScrollMagic.Scene({triggerElement: '#title', duration: 400, offset: 0})
                 .setTween(tween)
-                .addIndicators({parent: '#example-wrapper'}) // add indicators (requires plugin)
                 .addTo(ctrl);
 
 $(document).on('click', 'a[href^=\'#\']', function (e) {
@@ -83,9 +82,9 @@ $(document).on('click', 'a[href^=\'#\']', function (e) {
         e.preventDefault();
 
         // trigger scroll
-        controller.scrollTo(id);
+        ctrl.scrollTo(id);
 
-            // if supported by the browser we can even update the URL.
+        // if supported by the browser we can even update the URL.
         if (window.history && window.history.pushState) {
             history.pushState('', document.title, id);
         }
