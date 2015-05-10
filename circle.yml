@@ -12,5 +12,5 @@ deployment:
     owner: intbass
     branch: master
     commands:
-      - 'grunt build'
-      - 'scp -r dist/* intbass@intbass.com:/home/intbass/www/'
+      - grunt build
+      - scp -r dist/* intbass@$DEPLOY_SERVER:/home/intbass/www/
