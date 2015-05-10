@@ -6,25 +6,21 @@ html.no-js
     title International Bass Station
     meta(name='description', content='')
     meta(name='viewport', content='width=device-width, initial-scale=1')
-    // Place favicon.ico and apple-touch-icon.png in the root directory
-    // build:css(.) styles/vendor.css 
-    // bower:css 
+    != "\n<!-- build:css(.) styles/vendor.css -->\n"
     link(rel='stylesheet', href='bower_components/normalize.css/normalize.css')
-    // endbower 
-    // endbuild 
-    // build:css(.tmp) styles/main.css 
+    != "\n<!-- endbuild -->\n"
+    != "\n<!-- build:css(.tmp) styles/main.css -->\n"
     link(rel='stylesheet', href='styles/main.css')
-    // endbuild 
+    != "\n<!-- endbuild -->\n"
     //-script(src='javascripts/vendor/modernizr-2.7.1.min.js')
   body(ng-app="intbassApp")
-    <!--[if lt IE 8]>
+    != "<!--[if lt IE 8]>\n"
     p.browsehappy
       | You are using an <strong>outdated</strong> browser.
       | Please <a href="http://browsehappy.com/">upgrade your browser</a>
       | to improve your experience.
-    <![endif]-->
+    != "<![endif]-->\n"
 
-    <!-- Add your site or application content here -->
     div(id="intbass-wrapper" class="scrollContainer")
       div(class="scrollContent")
         section(id="title")
@@ -107,9 +103,7 @@ html.no-js
 
     script(src='//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js')
     script window.jQuery || document.write('<script src="javascripts/vendor/jquery-1.11.0.min.js"><\/script>')
-      
-    // build:js(.) scripts/vendor.js 
-    // bower:js 
+
     script(src="bower_components/angular/angular.js")
     script(src="bower_components/angular-animate/angular-animate.js")
     script(src="bower_components/angular-aria/angular-aria.js")
@@ -119,19 +113,26 @@ html.no-js
     script(src="bower_components/angular-route/angular-route.js")
     script(src="bower_components/angular-sanitize/angular-sanitize.js")
     script(src="bower_components/angular-touch/angular-touch.js")
+    != "\n<!-- build:js(.) scripts/vendor.js -->\n"
     script(src="bower_components/ngFitText/src/ng-FitText.js")
+    != "\n"
     script(src="bower_components/greensock/src/uncompressed/TweenMax.js")
+    != "\n"
     script(src="bower_components/scrollmagic/scrollmagic/uncompressed/ScrollMagic.js")
-    // endbower 
-    // endbuild 
-
-    // build:js({.tmp,app}) scripts/scripts.js 
-    script(src="scripts/newrelic.js")
+    != "\n"
     script(src="bower_components/scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap.js")
+    != "\n<!-- endbuild -->\n"
+
+    != "\n<!-- build:js({.tmp,app}) scripts/scripts.js -->\n"
+    script(src="scripts/newrelic.js")
+    != "\n"
     script(src="scripts/app.js")
+    != "\n"
     script(src="scripts/scroll.js")
+    != "\n"
     script(src="scripts/controllers/main.js")
-    // endbuild 
+    != "\n"
+    != "\n<!-- endbuild -->\n"
 
 
     //- Google Analytics: change UA-XXXXX-X to be your site's ID.
