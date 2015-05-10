@@ -13,4 +13,4 @@ deployment:
     branch: master
     commands:
       - 'grunt build'
-      - 'scp -vvvv -r dist/* intbass@intbass.com:/home/intbass/www/'
+      - 'scp -vvvv -r dist/* circleci@intbass.com:/home/intbass/www/'
