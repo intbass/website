@@ -51,7 +51,7 @@ body {
     height: 288px;
     z-index: -99;
     left: 0px;
-    top: 0px;
+    top: 100px;
     width: 100%;
 }
 #earthrise {
