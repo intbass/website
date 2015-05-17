@@ -37,69 +37,11 @@ html.no-js
                audio(hidden="hidden" preload="none")
                   source(src="http://intbass.com:8000/intbass-ogg-hi" type="audio/ogg; codecs=vorbis")
                   source(src="http://intbass.com:8000/intbass-mp3-hi" type="audio/mpeg; codecs=mp3")
-        section(id="archive", class="panel")
-          table
-            tr
-              th mix
-              th recorded on
-              th(align="left") notes
-              th file size
-            tr
-             td(align="center")
-               a(href="http://www.paulgrouchy.com/tofu/tofu-always_changin.mp3") always changin'
-             td(align="right") March 11th, 2015
-             td 40 mins of dnb
-             td(align="right") 57MB
-            tr
-             td(align="center")
-               a(href="http://www.paulgrouchy.com/tofu/tofu-ddub_approved.mp3") ddub approved
-             td(align="right") July 23rd, 2014
-             td 1.5 hrs of dnb
-             td(align="right") 122MB
-            tr
-             td(align="center")
-               a(href="http://www.paulgrouchy.com/tofu/tofu-dr_idiot.mp3") dr. idiot
-             td(align="right") June 18th, 2014
-             td 1.5 hrs of dnb
-             td(align="right") 124MB
-            tr
-             td(align="center")
-               a(href="http://www.paulgrouchy.com/tofu/tofu-swingindnb.mp3") swingin' dnb
-             td(align="right") March 26th, 2014
-             td 36 mins of electro swing followed by 25 mins of dnb
-             td(align="right") 84MB
-            tr
-             td(align="center")
-               a(href="http://www.paulgrouchy.com/tofu/tofu-spring_bounce.mp3") spring bounce
-             td(align="right") February 26th, 2014
-             td 46 mins of dnb
-             td(align="right") 63MB
-            tr
-             td(align="center")
-               a(href="http://www.paulgrouchy.com/tofu/tofu-hittinThirty.mp3") hittin' thirty
-             td(align="right") March 20th, 2013
-             td 63 mins of dnb
-             td(align="right") 86MB
-            tr
-             td(align="center")
-               a(href="http://www.paulgrouchy.com/tofu/greenleader_b2b_tofu-yinAndBang.mp3") yin and bang
-             td(align="right") February 27th, 2013
-             td 2 hrs of dnb, greenleader b2b tofu
-             td(align="right") 163MB
-            tr
-             td(align="center")
-               a(href="http://www.paulgrouchy.com/tofu/tofu-wedNesNightMadness.mp3") wednesnight madness
-             td(align="right") January 23rd, 2013
-             td 60 mins of dnb
-             td(align="right") 82MB
-            tr
-             td(align="center")
-               a(href="http://www.paulgrouchy.com/tofu/tofu-headInTheClouds.mp3") head in the clouds
-             td(align="right") January 9th, 2013
-             td 52 mins of dnb
-             td(align="right") 71MB
-          small Right click on a mix name, then "Save Link As..." or some such thing to download the mp3.
-          small Last updated on March 24th, 2015
+        section(id="archive", class="panel", ng-controller="archiveController")
+          ul(class="mixes")
+            li(ng-repeat="mix in mixes | filter:query | orderBy:orderProp" class="mix")
+              a(href="{{mix.url}}" class="mixtitle") {{ mix.title }}
+              div {{ mix.description }}
 
     script(src='//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js')
     script window.jQuery || document.write('<script src="javascripts/vendor/jquery-1.11.0.min.js"><\/script>')
@@ -129,6 +71,8 @@ html.no-js
     script(src="scripts/app.js")
     != "\n"
     script(src="scripts/scroll.js")
+    != "\n"
+    script(src="scripts/fixtures.js")
     != "\n"
     script(src="scripts/controllers/main.js")
     != "\n"

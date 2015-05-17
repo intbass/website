@@ -32,4 +32,8 @@ angular.module('intbassApp')
     get();
     stop = $interval(get, 30000);
   }
-});
+  })
+  .controller('archiveController', function ($scope) {
+    console.log(window.fixtures.mixes);
+    $scope.mixes = window.fixtures.mixes;
+  });

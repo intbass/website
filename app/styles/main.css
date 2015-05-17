@@ -112,3 +112,11 @@ body {
 #playing { font-size: 0.5em; float: left; }
 #artist { font-size: 0.3em; float: left; clear: left; }
 #tunein { float: right; }
+ol, ul {
+  list-style: none;
+  padding: 0;
+}
+li { margin-left: 0; border-bottom: 1px solid gray; }
+a.mixtitle { font-size: 3em }
+.mix, a.mixtitle { color: #e0e0e0; }
+.mix { padding-bottom: 10px; }
