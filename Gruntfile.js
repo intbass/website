@@ -396,7 +396,7 @@ module.exports = function(grunt) {
             },
             test: {
                 // Location of your protractor config file
-                configFile: "test/protractor.conf.js",
+                configFile: 'test/protractor.conf.js',
             }
         }
     });

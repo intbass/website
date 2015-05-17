@@ -14,18 +14,18 @@ angular.module('intbassApp')
     var get = function() {
       var req = {
         method: 'JSONP',
-        url: "http://intbass.com/api/station/intbass?callback=JSON_CALLBACK",
+        url: 'http://intbass.com/api/station/intbass?callback=JSON_CALLBACK',
         headers: {
           'Accept': 'appliction/json'
         }
       };
       $http(req)
-        .success(function(data, status, headers, config) {
+        .success(function(data) {
           $scope.playing = data.playing;
           $scope.artist = data.artist;
           $scope.live = data.live;
           $scope.listeners = data.listeners;
-      }).error(function(data, status, headers, config) {
+      }).error(function(_, status) {
           $scope.status = status;
       });
     };
