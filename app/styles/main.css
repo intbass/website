@@ -72,7 +72,7 @@ body {
     bottom: 0px;
     z-index: 1000000;
     height: 10vh;
-    width: 100%;
+    width: 99vw;
 }
 @media (max-width: 700px) {
     #broadcast {
