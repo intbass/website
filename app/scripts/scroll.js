@@ -1,5 +1,5 @@
 'use strict';
-/* global $, IScroll, ScrollMagic, TimelineMax, TweenMax, Linear */
+/* global $, IScroll, ScrollMagic, TimelineMax, TweenMax, Linear, Power1 */
 
 $(function () { // wait for document ready          
 // init ctrl
@@ -64,16 +64,6 @@ for (var i=0; i<slides.length; i=i+1) {
 // workaround for problem with bottom positioned pins
 $('#broadcast').parent().height($('#broadcast').height());
 
-var tween = new TimelineMax ()
-    .add([
-        TweenMax.to('#bassstation', 1, {y: '500', opacity: 0, ease: Linear.easeNone}),
-        TweenMax.to('#earthrise', 1, {y: '-50', ease: Linear.easeNone}),
-    ]);
-
-new ScrollMagic.Scene({triggerElement: '#title', duration: 400, offset: 0})
-                .setTween(tween)
-                .addTo(ctrl);
-
 $(document).on('click', 'a[href^=\'#\']', function (e) {
     var id = $(this).attr('href');
     if ($(id).length > 0) {
@@ -88,4 +78,22 @@ $(document).on('click', 'a[href^=\'#\']', function (e) {
         }
     }
 });
+
+    var flightpath = {
+        leave : {
+            curviness: 1.25,
+            autoRotate: true,
+            values: [
+                    {x: 0, y: 0},
+                    {x: $(window).width() + 300,  y: 0},
+                ]
+        }
+    };
+
+    var tween = new TimelineMax()
+        .add(TweenMax.to($('#bassstation'), 1, {css:{scale:0.001,bezier:flightpath.leave}, ease:Power1.easeInOut}));
+
+    new ScrollMagic.Scene({triggerElement: '#title', duration: 800, offset: 0})
+                .setTween(tween)
+                .addTo(ctrl);
 });
