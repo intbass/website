@@ -25,6 +25,10 @@ body {
     height: 100%;
     overflow: hidden;
     width: 100%;
+    background-color: black;
+    color: white;
+    font-family: 'Exo 2', sans-serif;
+    position: fixed!important;
 }
 section.panel {
     background-color: black;
@@ -36,12 +40,6 @@ a:hover,
 a:visited {
     color: white;
     text-decoration: none;
-}
-body {
-    background-color: black;
-    color: white;
-    font-family: 'Exo 2', sans-serif;
-    position: fixed!important;
 }
 #bassstation {
     position: relative;
