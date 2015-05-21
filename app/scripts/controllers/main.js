@@ -34,6 +34,5 @@ angular.module('intbassApp')
   }
   })
   .controller('archiveController', function ($scope) {
-    console.log(window.fixtures.mixes);
     $scope.mixes = window.fixtures.mixes;
   });
