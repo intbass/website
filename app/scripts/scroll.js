@@ -48,7 +48,6 @@ if (isMobile) {
       triggerElement: '#broadcast'
     })
     .setPin('#broadcast')
-    .setClassToggle('#broadcast', 'stucktop')
     .addTo(ctrl);
 
 // get all slides
@@ -60,7 +59,6 @@ for (var i=0; i<slides.length; i=i+1) {
       triggerElement: slides[i], offset: $('#broadcast').height()*-1
     })
     .setPin(slides[i])
-    .setClassToggle(slides[i], 'stuckpanel')
     .addTo(ctrl);
 }
 // workaround for problem with bottom positioned pins
