@@ -1,5 +1,5 @@
 'use strict';
-/* global $, IScroll, ScrollMagic, TimelineMax, TweenMax, Linear, Power1 */
+/* global $, IScroll, ScrollMagic, TimelineMax, TweenMax, Power1 */
 
 $(function () { // wait for document ready          
 // init ctrl
@@ -81,17 +81,16 @@ $(document).on('click', 'a[href^=\'#\']', function (e) {
 
     var flightpath = {
         leave : {
-            curviness: 1.25,
-            autoRotate: true,
             values: [
                     {x: 0, y: 0},
-                    {x: $(window).width() + 300,  y: 0},
+                    {x: 200, y: -50},
+                    {x: $(window).width(), y: 400},
                 ]
         }
     };
 
     var tween = new TimelineMax()
-        .add(TweenMax.to($('#bassstation'), 1, {css:{scale:0.001,bezier:flightpath.leave}, ease:Power1.easeInOut}));
+        .add(TweenMax.to($('#bassstation'), 1, {css:{scale:-1,bezier:flightpath.leave}, ease:Power1.easeInOut}));
 
     new ScrollMagic.Scene({triggerElement: '#title', duration: 800, offset: 0})
                 .setTween(tween)
