@@ -32,8 +32,8 @@ html.no-js
         section(id="broadcast" ng-controller="broadcastController")
           div
             span(id="tunein" onClick="location.href='//intbass.com/pls/intbass-mp3-hi.pls'") &nbsp;TUNE IN
-            span(id="playing" ng-bind="playing" data-fittext-load-delay="1500" data-fittext data-fittext-nl data-fittext-min="10" data-fittext-max="32") TUNES
-            span(id="artist" ng-bind="artist" data-fittext-load-delay="1500" data-fittext data-fittext-nl data-fittext-min="8" data-fittext-max="20") ARTIST
+            span(id="playing" ng-bind="playing" data-fittext-load-delay="200" data-fittext data-fittext-nl data-fittext-min="10" data-fittext-max="32")
+            span(id="artist" ng-bind="artist" data-fittext-load-delay="200" data-fittext data-fittext-nl data-fittext-min="8" data-fittext-max="20")
             div
                audio(hidden="hidden" preload="none")
                   source(src="http://intbass.com:8000/intbass-ogg-hi" type="audio/ogg; codecs=vorbis")
