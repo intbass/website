@@ -25,6 +25,8 @@ body {
     height: 100%;
     overflow: hidden;
     width: 100%;
+}
+body {
     background-color: black;
     color: white;
     font-family: 'Exo 2', sans-serif;
