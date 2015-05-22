@@ -91,10 +91,7 @@ a:visited {
     }
 }
 .tapertop {
-  background: -webkit-linear-gradient(rgba(0,0,0,0),rgba(0,0,0,1)); /*Safari 5.1-6*/
-  background: -o-linear-gradient(rgba(0,0,0,0),rgba(0,0,0,1)); /*Opera 11.1-12*/
-  background: -moz-linear-gradient(rgba(0,0,0,0),rgba(0,0,0,1)); /*Fx 3.6-15*/
-  background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,1)); /*Standard*/
+  background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,1));
   height: 40px;
   width: 100%;
 }
