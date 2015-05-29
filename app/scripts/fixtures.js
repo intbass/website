@@ -8,12 +8,6 @@ date: 'March 11th, 2015',
 description: '40 mins of dnb',
 size: 57,
 },{
-url: 'https://www.youtube.com/watch?v=TpObaoKb4ME',
-title: 'shit happens',
-date: 'March 11th, 2055',
-description: 'awesomesauce',
-size: 57,
-},{
 url: 'http://www.paulgrouchy.com/tofu/tofu-ddub_approved.mp3',
 title: 'ddub approved',
 date: 'July 23rd, 2014',
