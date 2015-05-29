@@ -20,5 +20,8 @@
     "angular-mocks": "^1.4.0"
   },
   "appPath": "app",
-  "moduleName": "intbassApp"
+  "moduleName": "intbassApp",
+  "resolutions": {
+    "angular": "^1.4.0"
+  }
 }
