@@ -39,7 +39,8 @@ section.panel {
 }
 a:link,
 a:hover,
-a:visited {
+a:visited,
+#tunein {
     color: white;
     text-decoration: none;
     cursor: pointer; cursor: hand;
