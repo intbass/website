@@ -14,3 +14,15 @@ deployment:
     commands:
       - 'grunt build'
       - 'scp -vvvv -r dist/* circleci@intbass.com:/home/intbass/www/'
+  preview:
+    owner: intbass
+    branch: /preview_.*/
+    commands:
+      - 'grunt build'
+      - 'ssh circleci@intbass.com "mkdir -p /home/intbass/www/preview/${CIRCLE_BRANCH//preview_/}/"'
+      - 'scp -vvvv -r dist/* circleci@intbass.com:/home/intbass/www/preview/${CIRCLE_BRANCH//preview_/}/'
+experimental:
+  notify:
+    branches:
+      only:
+        - master
