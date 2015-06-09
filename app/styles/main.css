@@ -105,6 +105,5 @@ ol, ul {
   padding: 0;
 }
 li { margin-left: 0; border-bottom: 1px solid gray; }
-a.mixtitle { font-size: 3em }
-.mix, a.mixtitle { color: #e0e0e0; }
-.mix { padding-bottom: 10px; }
+a.mixtitle { font-size: 2em }
+.mix { margin: 0.5em; padding: 0.5em; color: #e0e0e0; display: inline-block; vertical-align: top; width: 300px; overflow: hidden; }
