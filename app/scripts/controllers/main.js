@@ -14,7 +14,7 @@ angular.module('intbassApp')
     var get = function() {
       var req = {
         method: 'JSONP',
-        url: 'http://intbass.com/api/station/intbass?callback=JSON_CALLBACK',
+        url: '//intbass.com/api/station/intbass?callback=JSON_CALLBACK',
         headers: {
           'Accept': 'appliction/json'
         }
