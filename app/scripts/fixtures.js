@@ -360,7 +360,7 @@ size: 163,
 {
   url: 'http://intbass.com/archives/REC0366.mp3',
   djs: ['ddub', 'greenleader'],
-  title: 'atop an anthenian ascent',
+  title: 'atop an athenian ascent',
 },
 {
   url: 'http://intbass.com/archives/REC0497.mp3',
